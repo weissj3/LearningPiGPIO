@@ -37,7 +37,7 @@ class MicroStepper:
         self.setStep(0,0,0,0) #Zero Coils
         self.PWM_AC.start(0)
         self.PWM_BD.start(0)
-        buildStepTable()
+        self.buildStepTable()
         
     def buildStepTable(self):
         for i in range(self.TableSize):
@@ -78,7 +78,7 @@ class MicroStepper:
             self.Position = self.Position + 1
             if self.StepState == self.StepCount:
                 self.StepState = 0
-            setToStepState()
+            self.setToStepState()
             time.sleep(delay)
 
     def backwards(self, delay, steps):
@@ -87,7 +87,7 @@ class MicroStepper:
             self.Position = self.Position - 1
             if self.StepState < 0:
                 self.StepState = self.StepCount - 1
-            setToStepState()
+            self.setToStepState()
             time.sleep(delay)
             
     def setPosition(self, pos):
